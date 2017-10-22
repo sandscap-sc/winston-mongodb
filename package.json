@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "http://github.com/indexzero/winston-mongodb.git"
+    "url": "http://github.com/sandscap-sc/winston-mongodb.git"
   },
   "keywords": [
     "logging",
