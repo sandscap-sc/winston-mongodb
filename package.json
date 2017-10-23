@@ -4,8 +4,7 @@
   "version": "2.0.10",
   "description": "A MongoDB transport for winston",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
-  "contributors": [
-    {
+  "contributors": [{
       "name": "Yurij Mikhalevich",
       "email": "0@39.yt",
       "url": "https://39.yt/"
@@ -33,6 +32,7 @@
     "logger"
   ],
   "dependencies": {
+    "lodash": "^4.17.4",
     "mongodb": "^2.2.19"
   },
   "devDependencies": {
