@@ -4,7 +4,8 @@
   "version": "3.0.1",
   "description": "A MongoDB transport for winston",
   "author": "Charlie Robbins <charlie.robbins@gmail.com>",
-  "contributors": [{
+  "contributors": [
+    {
       "name": "Yurij Mikhalevich",
       "email": "0@39.yt",
       "url": "https://39.yt/"
@@ -33,7 +34,8 @@
   ],
   "dependencies": {
     "@types/winston": "^2.3.2",
-    "lodash": "^4.17.4",
+    "lodash.assignin": "^4.2.0",
+    "lodash.clonedeepwith": "^4.5.0",
     "mongodb": "^2.2.19"
   },
   "devDependencies": {
@@ -46,7 +48,16 @@
   "main": "./lib/winston-mongodb",
   "scripts": {
     "test": "vows test/*-test.js --spec",
-    "test-rs": "WINSTON_MONGODB_URL='mongodb://localhost:27017,localhost:27018/winston?replicaSet=rs0' vows test/*-test.js --spec"
+    "test-rs": "WINSTON_MONGODB_URL='mongodb://localhost:27017,localhost:27018/winston?replicaSet=rs0' vows test/*-test.js --spec",
+    "preversion": "git add . && echo Updating to version %npm_package_version%",
+    "postversion": "npm run changelog",
+    "changelog": "git changelog -t %npm_package_version%",
+    "postchangelog": "git add History.md",
+    "release": "npm --no-git-tag-version version patch",
+    "postrelease": "npm run commit:release && npm run tag:release && npm run push:release",
+    "commit:release": "git commit -am \"chore(release): %npm_package_version%\"",
+    "tag:release": "git tag -a %npm_package_version% -m \"%npm_package_version%\"",
+    "push:release": "git push --follow-tags"
   },
   "typings": "./lib/winston-mongodb.d.ts"
 }
